@@ -1,0 +1,11 @@
+1. shop page pe allproducts and discountedproducts show karvane h.
+2. har bag ke niche discount likha hua hona chahiye.
+3. cart me se items remove karvane hai.
+4. account details change karni hai.
+5. profile pic upload karvani hai.
+6. admin create page banana hai.✅
+7. flash messages ko kuch second baad hatvana hai.
+8. me user create karlu tab mujhe flash dikha ke login page pe lana hai.
+9. pending error handling. 
+10. admin panel se all products pe jayange toh uske liye ek alag page banana padega jaha apan products update and delete kar paaye.
+11. kya jo index.ejs pe flash show ho raha hai uske code ko kuch kam kar skte hai.

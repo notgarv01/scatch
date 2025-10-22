@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="max-w-3xl mx-auto p-8 bg-zinc-200 rounded-lg shadow-md">
+      <h1 class="text-3xl font-bold text-center mb-8">Shopping Cart</h1>
+
+      <% if(user.cart.length == 0){ %>
+      <h1 class="text-xl text-red-600">No items added!!</h1>
+      <%}else{ %>
+      <div class="flex flex-col md:flex-row justify-between gap-8">
+        <!-- Scrollable Items List -->
+        <div class="flex-1 max-h-96 overflow-y-auto pr-4">
+          <!-- Item 1 -->
+          <% user.cart.forEach(function(item){ %>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-4">
+              <img
+                src="data:image/jpeg;base64,<%= item.image.toString('base64') %>"
+                class="w-16 h-16 object-contain"
+              />
+              <div>
+                <div class="font-semibold text-lg"><%= item.name %></div>
+                <div class="text-sm text-gray-600">
+                  <p>Price: ₹<%= item.price %></p>
+                  <p>Discount: ₹<%= item.discount %></p>
+                </div>
+              </div>
+            </div>
+            <a
+              class="text-gray-400 hover:text-red-600"
+              aria-label="Remove Solo Stove Ranger"
+              href="/deletecartitems/<%= item._id %>"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </a>
+          </div>
+          <hr />
+          <% }) %>
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="w-full max-w-[250px]">
+          <div class="font-semibold text-lg mb-4">Price Breakdown</div>
+          <div class="flex justify-between mb-2">
+            <span>Subtotal</span>
+            <span>₹<%= subtotal %></span>
+          </div>
+          <div class="flex justify-between mb-2">
+            <span>Discount</span>
+            <span class="text-green-600">- ₹<%= totaldiscount %></span>
+          </div>
+          <div class="flex justify-between mb-2">
+            <span>Platform Fee</span>
+            <span>₹20.00</span>
+          </div>
+          <div class="flex justify-between mb-2">
+            <span>Shipping Fee</span>
+            <span>Free</span>
+          </div>
+          <hr class="my-2" />
+          <div class="flex justify-between font-bold text-xl mt-4">
+            <span>Total</span>
+            <span>₹<%= bill %></span>
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+      <!-- Buttons -->
+      <div class="flex justify-between mt-10 gap-4">
+        <a
+          href="/shop"
+          class="flex justify-center w-full md:w-[48%] py-3 bg-gray-100 rounded-md font-semibold text-lg hover:bg-gray-200 transition"
+          >Continue Shopping</a
+        >
+        <a
+          class="flex justify-center w-full md:w-[48%] py-3 bg-black text-white rounded-md font-bold text-lg shadow hover:bg-gray-800 transition"
+          >Checkout/BUY</a
+        >
+      </div>
+    </div>
+  </body>
+</html>
