@@ -38,3 +38,5 @@ app.listen(3000, function(){
     // console.log("its running");
     
 })
+
+module.exports = app;
